@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    background: black;
+  }
+ .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    color: white;
+  }
+  img{
+    height: 500px;
+  }
+</style>
+<body>
+  <div class="container">
+    <div>
+    <img src="" alt="" class="img">
+  </div>
+  <h2 class="h2">Chuck Norris is the blackest white man on the planet. Think about it.</h2>
+  </div>
+<script>
+  const h2 = document.querySelector(".h2");
+  const img = document.querySelector(".img");
+  // document.getElementById("myImg").src = "hackanm.gif";
+  fetch("https://api.chucknorris.io/jokes/random")
+.then((response) =>{
+return response.json();
+})
+.then((data) =>{
+  var joke = data.value;
+  var url = data.icon_url;
+  h2.innerHTML = joke;
+  img.src = `${url}`;
+  console.log("Joke :- ", joke)
+})
+.catch();
+
+
+</script>
+</body>
+</html>
